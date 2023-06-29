@@ -3,7 +3,7 @@ name: test-nodejs
 on:
   # trigger deployment on every push to main branch
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - '**'
       - '!LICENSE'
