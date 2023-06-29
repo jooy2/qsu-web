@@ -50,12 +50,12 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
 
-      - name: Find and Replace (logo)
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "logo.webp"
-          replace: "public/logo.webp"
-          regex: false
+      #- name: Find and Replace (logo)
+        #uses: jacobtomlinson/gha-find-replace@v3
+        #with:
+          #find: "logo.webp"
+          #replace: "public/logo.webp"
+          #regex: false
 
       # run build script
       - name: Build VitePress site
