@@ -6,7 +6,6 @@
 
 The main package repository for the `qsu` project is here: https://github.com/jooy2/qsu
 
-
 ## [Documentation (Getting Started & Method Reference)](https://qsu.jooy2.com/qsu-family-packages/qsu-web/getting-started/installation)
 
 Installing and using the package and defining all the utility methods can be found on the documentation page below: https://qsu.jooy2.com/qsu-family-packages/qsu-web/getting-started/installation
