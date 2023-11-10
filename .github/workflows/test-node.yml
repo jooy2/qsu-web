@@ -9,7 +9,6 @@ on:
       - '!LICENSE'
       - '!CODE_OF_CONDUCT.md'
       - '!CHANGELOG.md'
-      - '!docs/**'
       - '!.github/**'
   # trigger deployment manually
   workflow_dispatch:
