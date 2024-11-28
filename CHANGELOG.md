@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.1 (2024--)
+
+- Add `isMatchPathname` method
+
 ## 1.1.0 (2023-11-10)
 
 - Move documents

@@ -1,6 +1,6 @@
 import assert from 'assert';
 import { describe, it } from 'node:test';
-import { isBotAgent, license } from '../dist';
+import { isBotAgent, isMatchPathname, license } from '../dist';
 
 describe('Qsu web test', () => {
 	it('isBotAgent', () => {
@@ -14,6 +14,24 @@ describe('Qsu web test', () => {
 			),
 			false
 		);
+	});
+
+	it('isMatchPathname', () => {
+		assert.strictEqual(isMatchPathname('/user/login', '/admin'), false);
+		assert.strictEqual(isMatchPathname('/user/login', '/user'), false);
+		assert.strictEqual(isMatchPathname('/user/login', '/user/*'), true);
+		assert.strictEqual(isMatchPathname('/user/login', '/user/login/*'), false);
+		assert.strictEqual(isMatchPathname('/user/login', '/user/login*'), true);
+		assert.strictEqual(isMatchPathname('/user/login/hello', '/user/login*'), true);
+		assert.strictEqual(isMatchPathname('/user/login', ['/test', '/home/hello', '/user/*']), true);
+		assert.strictEqual(
+			isMatchPathname('/user/login', ['/test', '/home/hello', '/user/login']),
+			true
+		);
+		assert.strictEqual(isMatchPathname('/admin/hello/world', ['/admin/hello/']), false);
+		assert.strictEqual(isMatchPathname('/admin/hello/world', ['/admin/hello/world']), true);
+		assert.strictEqual(isMatchPathname('/admin/hello/world', ['/admin/*']), true);
+		assert.strictEqual(isMatchPathname('/admin/hello/world', ['*']), true);
 	});
 
 	it('license', () => {
