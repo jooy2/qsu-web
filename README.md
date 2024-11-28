@@ -16,4 +16,4 @@ You can report issues on [GitHub Issue Tracker](https://github.com/jooy2/qsu-web
 
 ## License
 
-Copyright © 2023 [Jooy2](https://jooy2.com) <[jooy2.contact@gmail.com](mailto:jooy2.contact@gmail.com)> Released under the MIT license.
+Copyright © 2023-2025 [CDGet](https://cdget.com) <[jooy2.contact@gmail.com](mailto:jooy2.contact@gmail.com)> Released under the MIT license.
