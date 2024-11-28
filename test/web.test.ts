@@ -1,8 +1,9 @@
 import assert from 'assert';
+import { describe, it } from 'node:test';
 import { isBotAgent, license } from '../dist';
 
 describe('Qsu web test', () => {
-	it('isBotAgent', (done) => {
+	it('isBotAgent', () => {
 		assert.strictEqual(
 			isBotAgent('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html'),
 			true
@@ -13,12 +14,10 @@ describe('Qsu web test', () => {
 			),
 			false
 		);
-		done();
 	});
 
-	it('license', (done) => {
+	it('license', () => {
 		assert(license({ type: 'mit', author: 'example', yearStart: 2021 }));
 		assert(license({ type: 'apache20', author: 'example', yearStart: 2021 }));
-		done();
 	});
 });

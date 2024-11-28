@@ -21,7 +21,6 @@ CODE_OF_CONDUCT.md
 .eslintrc.json
 .prettierignore
 .prettierrc
-.mocharc.json
 .editorconfig
 tsconfig.json
 tsconfig.prod.json

@@ -16,7 +16,7 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "npm run format:fix && tsc --project tsconfig.prod.json && npm run minify",
-		"test": "npm run build && mocha test/**/*.spec.ts -r ts-node/register --loader=ts-node/esm --timeout 10000",
+		"test": "npm run build && glob -c \"tsx --test\" \"./test/**/*.test.ts\"",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
 		"minify": "terser dist/index.js --config-file .terserrc -o dist/index.js",
@@ -25,7 +25,7 @@
 		"format:fix": "prettier . --write"
 	},
 	"engines": {
-		"node": ">=14.0.0"
+		"node": ">=18.0.0"
 	},
 	"main": "dist/index.js",
 	"exports": {
@@ -57,10 +57,10 @@
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-import": "^2.29.0",
-		"mocha": "^10.2.0",
+		"glob": "^11.0.0",
 		"prettier": "^3.0.3",
 		"terser": "^5.24.0",
-		"ts-node": "^10.9.1",
+		"tsx": "^4.19.2",
 		"typescript": "^5.2.2"
 	}
 }

@@ -4,7 +4,6 @@
 
 **qsu-web** is an underscore-based utility library optimized for the **[Node.js](https://nodejs.org)** development environment. It is supported in one module without the need to separately write frequently used methods for each project.
 
-
 > [!NOTE]
 >
 > The main package repository for the `qsu` project is here: https://github.com/jooy2/qsu
