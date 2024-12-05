@@ -19,7 +19,7 @@
 		"test": "npm run build && glob -c \"tsx --test\" \"./test/**/*.test.ts\"",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
-		"minify": "terser dist/index.js --config-file .terserrc -o dist/index.js",
+		"minify": "terser-glob dist/*.js --config-file .terserrc",
 		"prepare": "npm run build",
 		"format": "prettier .",
 		"format:fix": "prettier . --write"
@@ -49,7 +49,6 @@
 		"format"
 	],
 	"devDependencies": {
-		"@types/mocha": "^10.0.4",
 		"@types/node": "^20.9.0",
 		"@typescript-eslint/eslint-plugin": "^6.10.0",
 		"@typescript-eslint/parser": "^6.10.0",
@@ -59,7 +58,7 @@
 		"eslint-plugin-import": "^2.29.0",
 		"glob": "^11.0.0",
 		"prettier": "^3.0.3",
-		"terser": "^5.24.0",
+		"terser-glob": "^1.1.0",
 		"tsx": "^4.19.2",
 		"typescript": "^5.2.2"
 	}
