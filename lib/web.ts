@@ -32,18 +32,32 @@ export function removeLocalePrefix(urlOrPathname: string, locales: string | stri
 		return '/';
 	}
 
+	const joinLocaleLists = localeLists.join('|');
+
 	try {
 		const urlObj = new URL(urlOrPathname);
 
-		return `${urlObj.origin}${urlObj.pathname.replace(
-			new RegExp(`^/(${localeLists.join('|')})`),
-			''
-		)}`;
+		if (urlObj.pathname === '/') {
+			return '/';
+		}
+
+		return `${urlObj.origin}${urlObj.pathname.replace(new RegExp(`^/(${joinLocaleLists})/`), '/')}`;
 	} catch {
-		return urlOrPathname.replace(
-			new RegExp(`^${urlOrPathname.startsWith('/') ? '/' : ''}(${localeLists.join('|')})`),
-			''
-		);
+		let realPathname = urlOrPathname;
+
+		if (!realPathname.startsWith('/')) {
+			realPathname = `/${realPathname}`;
+		}
+
+		if (realPathname.endsWith('/')) {
+			realPathname = realPathname.replace(/\/$/, '');
+		}
+
+		if (new RegExp(`^/(${joinLocaleLists})$`).test(realPathname)) {
+			return '/';
+		}
+
+		return realPathname.replace(new RegExp(`^/(${joinLocaleLists})/`), '/');
 	}
 }
 

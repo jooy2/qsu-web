@@ -1,6 +1,7 @@
 import assert from 'assert';
 import { describe, it } from 'node:test';
 import { isBotAgent, isMatchPathname, license, removeLocalePrefix } from '../dist';
+import { homepage } from '../package.json';
 
 describe('Qsu web test', () => {
 	it('isBotAgent', () => {
@@ -35,24 +36,33 @@ describe('Qsu web test', () => {
 	});
 
 	it('removeLocalePrefix', () => {
-		assert.strictEqual(removeLocalePrefix('user/login', ['ko', 'en']), 'user/login');
 		assert.strictEqual(removeLocalePrefix('/user/login', ['ko', 'en']), '/user/login');
 		assert.strictEqual(removeLocalePrefix('/ko/user/login', 'ko'), '/user/login');
+		assert.strictEqual(removeLocalePrefix('/koen/user/login', 'ko'), '/koen/user/login');
 		assert.strictEqual(removeLocalePrefix('/ko/user/login', ['ko', 'en']), '/user/login');
+		assert.strictEqual(removeLocalePrefix('/user/ko/login', ['ko', 'en']), '/user/ko/login');
 		assert.strictEqual(removeLocalePrefix('/en/user/login', ['ko', 'en']), '/user/login');
 		assert.strictEqual(removeLocalePrefix('/cn/user/login', ['ko', 'en']), '/cn/user/login');
 		assert.strictEqual(removeLocalePrefix('ko/user/login', ['ko', 'en']), '/user/login');
 		assert.strictEqual(
-			removeLocalePrefix('https://qsu.cdget.com/user/login', ['ko', 'en']),
-			'https://qsu.cdget.com/user/login'
+			removeLocalePrefix(`${homepage}/user/login`, ['ko', 'en']),
+			`${homepage}/user/login`
 		);
 		assert.strictEqual(
-			removeLocalePrefix('https://qsu.cdget.com/ko/user/login', ['ko', 'en']),
-			'https://qsu.cdget.com/user/login'
+			removeLocalePrefix(`${homepage}/koen/user/login`, ['ko', 'en']),
+			`${homepage}/koen/user/login`
 		);
 		assert.strictEqual(
-			removeLocalePrefix('https://qsu.cdget.com/ko/en/user/login', ['ko', 'en']),
-			'https://qsu.cdget.com/en/user/login'
+			removeLocalePrefix(`${homepage}/user/ko/login`, ['ko', 'en']),
+			`${homepage}/user/ko/login`
+		);
+		assert.strictEqual(
+			removeLocalePrefix(`${homepage}/ko/user/login`, ['ko', 'en']),
+			`${homepage}/user/login`
+		);
+		assert.strictEqual(
+			removeLocalePrefix(`${homepage}/ko/en/user/login`, ['ko', 'en']),
+			`${homepage}/en/user/login`
 		);
 	});
 
