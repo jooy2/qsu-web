@@ -16,7 +16,7 @@ CODE_OF_CONDUCT.md
 
 # For development
 .git/
-.terserrc
+terser.config.json
 .eslintignore
 .eslintrc.json
 .prettierignore

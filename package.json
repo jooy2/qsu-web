@@ -19,7 +19,7 @@
 		"test": "npm run build && glob -c \"tsx --test\" \"./test/**/*.test.ts\"",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
-		"minify": "terser-glob dist/*.js --config-file .terserrc",
+		"minify": "terser-glob dist/*.js --config-file terser.config.json",
 		"prepare": "npm run build",
 		"format": "prettier .",
 		"format:fix": "prettier . --write"
