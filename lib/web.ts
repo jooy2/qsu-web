@@ -25,6 +25,28 @@ export function isBotAgent(userAgent: string): boolean {
 	);
 }
 
+export function removeLocalePrefix(urlOrPathname: string, locales: string | string[]): string {
+	const localeLists = Array.isArray(locales) ? locales : [locales];
+
+	if (localeLists.includes(urlOrPathname.replace(/^\//, ''))) {
+		return '/';
+	}
+
+	try {
+		const urlObj = new URL(urlOrPathname);
+
+		return `${urlObj.origin}${urlObj.pathname.replace(
+			new RegExp(`^/(${localeLists.join('|')})`),
+			''
+		)}`;
+	} catch {
+		return urlOrPathname.replace(
+			new RegExp(`^${urlOrPathname.startsWith('/') ? '/' : ''}(${localeLists.join('|')})`),
+			''
+		);
+	}
+}
+
 export function license(options: LicenseOption): string {
 	const br = options.htmlBr ? '<br/>' : '\n';
 	const yearString = `${options.yearStart}${options.yearEnd ? `-${options.yearEnd}` : ''}`;

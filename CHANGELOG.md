@@ -3,6 +3,7 @@
 ## 1.1.1 (2024--)
 
 - Add `isMatchPathname` method
+- Add `removeLocalePrefix` method
 
 ## 1.1.0 (2023-11-10)
 

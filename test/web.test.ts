@@ -1,6 +1,6 @@
 import assert from 'assert';
 import { describe, it } from 'node:test';
-import { isBotAgent, isMatchPathname, license } from '../dist';
+import { isBotAgent, isMatchPathname, license, removeLocalePrefix } from '../dist';
 
 describe('Qsu web test', () => {
 	it('isBotAgent', () => {
@@ -32,6 +32,28 @@ describe('Qsu web test', () => {
 		assert.strictEqual(isMatchPathname('/admin/hello/world', ['/admin/hello/world']), true);
 		assert.strictEqual(isMatchPathname('/admin/hello/world', ['/admin/*']), true);
 		assert.strictEqual(isMatchPathname('/admin/hello/world', ['*']), true);
+	});
+
+	it('removeLocalePrefix', () => {
+		assert.strictEqual(removeLocalePrefix('user/login', ['ko', 'en']), 'user/login');
+		assert.strictEqual(removeLocalePrefix('/user/login', ['ko', 'en']), '/user/login');
+		assert.strictEqual(removeLocalePrefix('/ko/user/login', 'ko'), '/user/login');
+		assert.strictEqual(removeLocalePrefix('/ko/user/login', ['ko', 'en']), '/user/login');
+		assert.strictEqual(removeLocalePrefix('/en/user/login', ['ko', 'en']), '/user/login');
+		assert.strictEqual(removeLocalePrefix('/cn/user/login', ['ko', 'en']), '/cn/user/login');
+		assert.strictEqual(removeLocalePrefix('ko/user/login', ['ko', 'en']), '/user/login');
+		assert.strictEqual(
+			removeLocalePrefix('https://qsu.cdget.com/user/login', ['ko', 'en']),
+			'https://qsu.cdget.com/user/login'
+		);
+		assert.strictEqual(
+			removeLocalePrefix('https://qsu.cdget.com/ko/user/login', ['ko', 'en']),
+			'https://qsu.cdget.com/user/login'
+		);
+		assert.strictEqual(
+			removeLocalePrefix('https://qsu.cdget.com/ko/en/user/login', ['ko', 'en']),
+			'https://qsu.cdget.com/en/user/login'
+		);
 	});
 
 	it('license', () => {
