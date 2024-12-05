@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1.1 (2024--)
+## 1.2.0 (2024-12-05)
 
 - Add `isMatchPathname` method
 - Add `removeLocalePrefix` method
