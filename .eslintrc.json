@@ -20,7 +20,7 @@
 	},
 	"overrides": [
 		{
-			"files": ["test/*.test.ts"],
+			"files": ["**/*.ts"],
 			"rules": {
 				"import/no-unresolved": 0,
 				"no-undef": 0

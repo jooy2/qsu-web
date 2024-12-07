@@ -1,4 +1,4 @@
-import type { LicenseOption } from './types';
+import type { LicenseOption } from './types.js';
 
 export function isMatchPathname(pathname: string, matcher: string | string[]): boolean {
 	if (!pathname || !matcher || matcher?.length < 1) {
