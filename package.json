@@ -58,17 +58,17 @@
 		"format"
 	],
 	"devDependencies": {
-		"@types/node": "^22.10.1",
+		"@types/node": "^22.13.4",
 		"@typescript-eslint/eslint-plugin": "^6.10.0",
 		"@typescript-eslint/parser": "^6.10.0",
 		"eslint": "^8.53.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-import": "^2.29.0",
-		"glob": "^11.0.0",
-		"prettier": "^3.4.2",
+		"glob": "^11.0.1",
+		"prettier": "^3.5.1",
 		"terser-glob": "^1.1.0",
 		"tsx": "^4.19.2",
-		"typescript": "^5.7.2"
+		"typescript": "^5.7.3"
 	}
 }
