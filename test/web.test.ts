@@ -36,6 +36,10 @@ describe('Qsu web test', () => {
 	});
 
 	it('removeLocalePrefix', () => {
+		assert.strictEqual(removeLocalePrefix('/', ['ko', 'en']), '/');
+		assert.strictEqual(removeLocalePrefix('', ['ko', 'en']), '');
+		assert.strictEqual(removeLocalePrefix('ko', ['ko', 'en']), '');
+		assert.strictEqual(removeLocalePrefix('/ko', ['ko', 'en']), '');
 		assert.strictEqual(removeLocalePrefix('/user/login', ['ko', 'en']), '/user/login');
 		assert.strictEqual(removeLocalePrefix('/ko/user/login', 'ko'), '/user/login');
 		assert.strictEqual(removeLocalePrefix('/koen/user/login', 'ko'), '/koen/user/login');
@@ -44,6 +48,8 @@ describe('Qsu web test', () => {
 		assert.strictEqual(removeLocalePrefix('/en/user/login', ['ko', 'en']), '/user/login');
 		assert.strictEqual(removeLocalePrefix('/cn/user/login', ['ko', 'en']), '/cn/user/login');
 		assert.strictEqual(removeLocalePrefix('ko/user/login', ['ko', 'en']), '/user/login');
+		assert.strictEqual(removeLocalePrefix(homepage, ['ko', 'en']), homepage);
+		assert.strictEqual(removeLocalePrefix(`${homepage}/ko`, ['ko', 'en']), homepage);
 		assert.strictEqual(
 			removeLocalePrefix(`${homepage}/user/login`, ['ko', 'en']),
 			`${homepage}/user/login`

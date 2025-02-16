@@ -29,6 +29,10 @@ export function removeLocalePrefix(urlOrPathname: string, locales: string | stri
 	const localeLists = Array.isArray(locales) ? locales : [locales];
 
 	if (localeLists.includes(urlOrPathname.replace(/^\//, ''))) {
+		return '';
+	}
+
+	if (urlOrPathname === '/') {
 		return '/';
 	}
 
@@ -37,11 +41,14 @@ export function removeLocalePrefix(urlOrPathname: string, locales: string | stri
 	try {
 		const urlObj = new URL(urlOrPathname);
 
-		if (urlObj.pathname === '/') {
-			return '/';
+		if (urlObj.pathname === '/' || localeLists.includes(urlObj.pathname.replace(/^\//, ''))) {
+			return urlObj.origin;
 		}
 
-		return `${urlObj.origin}${urlObj.pathname.replace(new RegExp(`^/(${joinLocaleLists})/`), '/')}`;
+		return `${urlObj.origin}${urlObj.pathname.replace(new RegExp(`^/(${joinLocaleLists})/`), '/')}`.replace(
+			/\/$/,
+			''
+		);
 	} catch {
 		let realPathname = urlOrPathname;
 

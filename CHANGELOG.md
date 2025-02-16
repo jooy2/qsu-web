@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.2 (2025-02-16)
+
+- `removeLocalePrefix`: Fix prevented certain URLs from being processed
+
 ## 1.2.1 (2024-12-07)
 
 - Improvement `removeLocalePrefix` method
