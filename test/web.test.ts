@@ -44,6 +44,19 @@ describe('Qsu web test', () => {
 		assert.strictEqual(removeLocalePrefix('/ko/user/login', 'ko'), '/user/login');
 		assert.strictEqual(removeLocalePrefix('/koen/user/login', 'ko'), '/koen/user/login');
 		assert.strictEqual(removeLocalePrefix('/ko/user/login', ['ko', 'en']), '/user/login');
+		assert.strictEqual(removeLocalePrefix('/zh-CN/user/login', ['zh-CN', 'zh-TW']), '/user/login');
+		assert.strictEqual(
+			removeLocalePrefix('/zh-CNT/user/login', ['zh-CN', 'zh-TW']),
+			'/zh-CNT/user/login'
+		);
+		assert.strictEqual(
+			removeLocalePrefix('/zhCNT/user/login', ['zh-CN', 'zh-TW']),
+			'/zhCNT/user/login'
+		);
+		assert.strictEqual(
+			removeLocalePrefix('/zh-cn/user/login', ['zh-CN', 'zh-TW']),
+			'/zh-cn/user/login'
+		);
 		assert.strictEqual(removeLocalePrefix('/user/ko/login', ['ko', 'en']), '/user/ko/login');
 		assert.strictEqual(removeLocalePrefix('/en/user/login', ['ko', 'en']), '/user/login');
 		assert.strictEqual(removeLocalePrefix('/cn/user/login', ['ko', 'en']), '/cn/user/login');
