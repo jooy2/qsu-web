@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.3 (2025-02-26)
+
+- Add `isMobile` method
+
 ## 1.2.2 (2025-02-16)
 
 - `removeLocalePrefix`: Fix prevented certain URLs from being processed

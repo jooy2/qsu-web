@@ -1,20 +1,33 @@
 import assert from 'assert';
 import { describe, it } from 'node:test';
-import { isBotAgent, isMatchPathname, license, removeLocalePrefix } from '../dist';
+import { isBotAgent, isMatchPathname, license, removeLocalePrefix, isMobile } from '../dist';
 import { homepage } from '../package.json';
+
+const userAgentBot = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html';
+const userAgentDesktop =
+	'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36';
+const userAgentMobileIOS =
+	'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1';
+const userAgentMobileAndroid =
+	'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36';
+const userAgentTablet =
+	'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15';
 
 describe('Qsu web test', () => {
 	it('isBotAgent', () => {
-		assert.strictEqual(
-			isBotAgent('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html'),
-			true
-		);
-		assert.strictEqual(
-			isBotAgent(
-				'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-			),
-			false
-		);
+		assert.strictEqual(isBotAgent(userAgentBot), true);
+		assert.strictEqual(isBotAgent(userAgentDesktop), false);
+		assert.strictEqual(isBotAgent(userAgentMobileIOS), false);
+		assert.strictEqual(isBotAgent(userAgentMobileAndroid), false);
+		assert.strictEqual(isBotAgent(userAgentTablet), false);
+	});
+
+	it('isMobile', () => {
+		assert.strictEqual(isMobile(userAgentBot), false);
+		assert.strictEqual(isMobile(userAgentDesktop), false);
+		assert.strictEqual(isMobile(userAgentMobileIOS), true);
+		assert.strictEqual(isMobile(userAgentMobileAndroid), true);
+		assert.strictEqual(isMobile(userAgentTablet), false);
 	});
 
 	it('isMatchPathname', () => {
