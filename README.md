@@ -4,26 +4,15 @@
 
 **qsu-web** is an underscore-based utility library optimized for the **[Node.js](https://nodejs.org)** development environment. It is supported in one module without the need to separately write frequently used methods for each project.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> The main package repository for the `qsu` project is here: https://github.com/jooy2/qsu
+> This package is no longer maintained. All utility functions in it have been merged into the following package:
+>
+> https://github.com/jooy2/qsu
 
 ## [Documentation (Getting Started & Method Reference)](https://qsu.cdget.com/getting-started/installation-javascript)
 
 Installing and using the package and defining all the utility methods can be found on the documentation page below: https://qsu.cdget.com/getting-started/installation-javascript
-
-## Family Packages
-
-As a family package of `qsu`, it can be installed and used independently of the `qsu` package.
-
-- **[qsu-fs](https://github.com/jooy2/qsu-fs)**: File listing and management utilities
-- **[qsu-web](https://github.com/jooy2/qsu-web)**: Utilities for website front-end & back-end services
-
-In addition, `qsu` is also available for the Dart language: https://github.com/jooy2/qsu-dart
-
-## Contributing
-
-Anyone can contribute to the project by reporting new issues or submitting a pull request. For more information, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
